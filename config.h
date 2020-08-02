@@ -33,7 +33,7 @@ static const char tagnormbg[]       = "#282828";
 static const char tagnormborder[]   = "#1d2021";
 static const char tagselbg[]        = "#005577";
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
+	/*                fg         bg         border   */
 	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]   = { statusfg,  tagselbg,  col_cyan  },
         [SchemeTitle] = { col_gray3, col_gray1, col_cyan  },
@@ -57,7 +57,7 @@ static const Rule rules[] = {
 	 */
 
 	/* class,         instance, title,                    tags mask, isfloating, isterminal, noswallow, monitor */
-	{ "Gimp",         NULL,     NULL,                     0,         1,          0,          0,         -1},
+	{ "Gimp",         NULL,     NULL,                     1 << 6,    0,          0,          0,         -1},
 	{ "Firefox",      NULL,     NULL,                     1 << 8,    0,          0,          0,         -1},
 	{ "Chromium",     NULL,     NULL,                     1 << 2,    0,          0,          1,         -1},
 	{ "St",           NULL,     NULL,                     1 << 1,    0,          1,          0,         -1},
@@ -67,6 +67,7 @@ static const Rule rules[] = {
 	{ "Pavucontrol",  NULL,     NULL,                     1 << 0,    1,          0,          0,         -1},
 	{ "Font-manager", NULL,     NULL,                     1 << 3,    0,          0,          0,         -1},
 	{ "URxvt",        NULL,     NULL,                     0,         1,          1,          0,         -1},
+	{ "GitKraken",    NULL,     NULL,                     1 << 4,    0,          0,          0,         -1},
 	{ NULL,           NULL,     "Event Tester",           0,         0,          0,          1,         -1},
 };
 
