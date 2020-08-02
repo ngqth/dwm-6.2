@@ -36,13 +36,13 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm]  = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]   = { statusfg,  tagselbg,  col_cyan  },
-    [SchemeTitle] = { col_gray3, col_gray1, col_cyan  },
+        [SchemeTitle] = { col_gray3, col_gray1, col_cyan  },
 	[SchemeUrg]   = { col_gray4, col_cyan,  "#ff0000" },
 };
 
 static const char *const autostart[] = {
-    "sh", "-c", "dropbox start &", NULL,
-    "sh", "-c", "xautolock -time 60 -locker blurlock &", NULL,
+        "sh", "-c", "dropbox start &", NULL,
+        "sh", "-c", "xautolock -time 60 -locker blurlock &", NULL,
 	"sh", "-c", "sleep 10s; nohup dwm_bar &", NULL,
 	NULL /* terminate */
 };
@@ -152,8 +152,8 @@ static Key keys[] = {
 	{ 0,                        0,            incrovgaps,     {.i = -1 } },
 
 	{ MODKEY,                   XK_grave,     togglescratch,  {.v = scratchpadcmd } },
-    { MODKEY,                   XK_Return,    spawn,          SHCMD("st") },
-    { MODKEY,                   XK_z,         spawn,          {.v = dmenucmd } },
+        { MODKEY,                   XK_Return,    spawn,          SHCMD("st") },
+        { MODKEY,                   XK_z,         spawn,          {.v = dmenucmd } },
 	{ MODKEY,                   XK_b,         togglebar,      {0} },
 	{ MODKEY,                   XK_j,         focusstack,     {.i = +1 } },
 	{ MODKEY,                   XK_k,         focusstack,     {.i = -1 } },
