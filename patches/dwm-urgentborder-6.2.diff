@@ -1,0 +1,57 @@
+From b70614f535764227245fb19d2f7f0e1174911175 Mon Sep 17 00:00:00 2001
+From: Larry <fake_larry@protonmail.com>
+Date: Mon, 5 Aug 2019 21:32:48 +0000
+Subject: [PATCH] Update urgentborder to 6.2
+
+Description from the original author:
+
+This patch makes borders of "urgent" windows a different color. By
+default it is bright red. Use config.h item "urgbordercolor" to change
+it.
+
+Author:
+Alexander Huemer - alexander dot huemer dot xx dot vu (Based on former
+work by Ray Kohler - ataraxia937 gmail com)
+---
+ config.def.h | 1 +
+ dwm.c        | 6 +++---
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 1c0b587..6832fec 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -16,6 +16,7 @@ static const char *colors[][3]      = {
+ 	/*               fg         bg         border   */
+ 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+ 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
++	[SchemeUrg]  = { col_gray4, col_cyan,  "#ff0000" },
+ };
+ 
+ /* tagging */
+diff --git a/dwm.c b/dwm.c
+index 4465af1..49ee757 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -59,7 +59,7 @@
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+-enum { SchemeNorm, SchemeSel }; /* color schemes */
++enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+@@ -2022,8 +2022,8 @@ updatewmhints(Client *c)
+ 		if (c == selmon->sel && wmh->flags & XUrgencyHint) {
+ 			wmh->flags &= ~XUrgencyHint;
+ 			XSetWMHints(dpy, c->win, wmh);
+-		} else
+-			c->isurgent = (wmh->flags & XUrgencyHint) ? 1 : 0;
++		} else if ((c->isurgent = (wmh->flags & XUrgencyHint) ? 1 : 0))
++			XSetWindowBorder(dpy, c->win, scheme[SchemeUrg][ColBorder].pixel);
+ 		if (wmh->flags & InputHint)
+ 			c->neverfocus = !wmh->input;
+ 		else
+-- 
+2.21.0
