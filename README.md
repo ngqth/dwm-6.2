@@ -1,1 +1,7 @@
-dwm-6.2
+My dwm config
+=============
+After cloning, please cd to this directory, install by
+```shell
+make
+make clean install
+```
