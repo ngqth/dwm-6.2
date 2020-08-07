@@ -43,7 +43,8 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
         "sh", "-c", "dropbox start &", NULL,
         "sh", "-c", "xautolock -time 60 -locker blurlock &", NULL,
-	"sh", "-c", "sleep 10s; nohup dwm_bar &", NULL,
+        "sh", "-c", "sleep 5s; dwm_bar &", NULL,
+        "sh", "-c", "openweathermap &", NULL,
 	NULL /* terminate */
 };
 
@@ -68,6 +69,7 @@ static const Rule rules[] = {
 	{ "Font-manager", NULL,     NULL,                     1 << 3,    0,          0,          0,         -1},
 	{ "URxvt",        NULL,     NULL,                     0,         1,          1,          0,         -1},
 	{ "GitKraken",    NULL,     NULL,                     1 << 4,    0,          0,          0,         -1},
+	{ "TeXstudio",    NULL,     NULL,                     1 << 3,    0,          0,          0,         -1},
 	{ NULL,           NULL,     "Event Tester",           0,         0,          0,          1,         -1},
 };
 
